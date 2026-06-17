@@ -6,7 +6,7 @@ El sistema fue diseñado bajo una arquitectura moderna basada en servicios en la
 
 ---
 
-## ⚙️ ENFOQUE DEL SISTEMA
+## ENFOQUE DEL SISTEMA
 
 El sistema sigue una arquitectura distribuida donde cada componente cumple una función específica:
 
@@ -19,7 +19,7 @@ Este enfoque permite que el sistema funcione sin necesidad de servidores locales
 
 ---
 
-## 🧩 STACK TECNOLÓGICO
+## STACK TECNOLÓGICO
 
 - HTML5, CSS3, JavaScript (Frontend)
 - Supabase (Backend as a Service con PostgreSQL)
@@ -28,7 +28,7 @@ Este enfoque permite que el sistema funcione sin necesidad de servidores locales
 
 ---
 
-## 📁 ESTRUCTURA DEL PROYECTO
+## ESTRUCTURA DEL PROYECTO
 
 - `index.html` → Interfaz del cliente y catálogo de productos
 - `admin.html` → Panel de administración del sistema
@@ -39,7 +39,7 @@ Este enfoque permite que el sistema funcione sin necesidad de servidores locales
 
 ---
 
-# 🚀 PROCESO DE DESPLIEGUE DEL SISTEMA
+#PROCESO DE DESPLIEGUE DEL SISTEMA
 
 El despliegue del sistema se realizó mediante un flujo estructurado basado en integración continua y servicios en la nube.
 
@@ -108,13 +108,13 @@ Se verificaron los siguientes elementos:
 
 ---
 
-## 🌐 URL DEL SISTEMA EN PRODUCCIÓN
+## URL DEL SISTEMA EN PRODUCCIÓN
 
-👉 https://minimarket-five.vercel.app/
+ https://minimarket-five.vercel.app/
 
 ---
 
-## 🧠 RESULTADO DEL DESPLIEGUE
+## RESULTADO DEL DESPLIEGUE
 
 El sistema fue desplegado exitosamente en la nube logrando:
 
@@ -126,7 +126,7 @@ El sistema fue desplegado exitosamente en la nube logrando:
 
 ---
 
-## 📌 CONCLUSIÓN TÉCNICA
+## CONCLUSIÓN TÉCNICA
 
 El proceso de despliegue permitió comprender un flujo real de desarrollo moderno, donde el código pasa de un entorno local a un entorno productivo sin necesidad de servidores físicos.
 
