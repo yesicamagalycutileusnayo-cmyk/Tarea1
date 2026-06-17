@@ -1,57 +1,133 @@
 # 🛒 SISTEMA WEB MINIMARKET SANTA MARÍA
 
-Este proyecto consiste en el desarrollo e implementación de un sistema web para la gestión de productos de un minimarket, orientado al control de inventario y administración de datos en línea.
+Este proyecto consiste en el desarrollo e implementación de un sistema web para la gestión de productos de un minimarket, orientado al control de inventario y administración en línea.
 
-La solución fue diseñada bajo una arquitectura moderna basada en servicios en la nube, permitiendo que el sistema funcione de manera desacoplada, escalable y accesible desde cualquier navegador sin necesidad de servidores locales.
-
-El enfoque del proyecto prioriza la simplicidad operativa, la automatización del despliegue y la integración de herramientas cloud actuales utilizadas en entornos reales de desarrollo web.
+El sistema fue diseñado bajo una arquitectura moderna basada en servicios en la nube, aplicando el enfoque **JAMstack**, lo que permite desacoplar el frontend, backend y despliegue, logrando mayor escalabilidad, rendimiento y facilidad de mantenimiento.
 
 ---
 
 ## ⚙️ ENFOQUE DEL SISTEMA
 
-El sistema está construido bajo un modelo **JAMstack**, donde cada componente cumple una función específica:
+El sistema sigue una arquitectura distribuida donde cada componente cumple una función específica:
 
-- La interfaz de usuario se ejecuta completamente en el navegador.
-- Los datos se gestionan en una base de datos remota.
-- El despliegue se realiza de forma automática mediante integración continua.
+- Interfaz de usuario ejecutada en el navegador (Frontend)
+- Base de datos en la nube con acceso seguro (Supabase)
+- Despliegue automatizado en plataforma serverless (Vercel)
+- Control de versiones centralizado (GitHub)
 
-Esto permite un flujo de desarrollo más limpio, rápido y mantenible, reduciendo la dependencia de servidores tradicionales.
+Este enfoque permite que el sistema funcione sin necesidad de servidores locales tradicionales.
 
 ---
 
 ## 🧩 STACK TECNOLÓGICO
 
-- **Frontend:** HTML5, CSS3 y JavaScript modular nativo
-- **Backend as a Service:** Supabase (PostgreSQL + API REST + autenticación)
-- **Hosting y despliegue:** Vercel con integración CI/CD desde GitHub
-- **Control de versiones:** GitHub como repositorio central del proyecto
+- HTML5, CSS3, JavaScript (Frontend)
+- Supabase (Backend as a Service con PostgreSQL)
+- Vercel (Hosting y despliegue automático)
+- GitHub (Control de versiones y CI/CD)
 
 ---
 
-## 📁 ESTRUCTURA GENERAL DEL PROYECTO
-
-El sistema se encuentra organizado en archivos planos ubicados en la raíz del proyecto:
+## 📁 ESTRUCTURA DEL PROYECTO
 
 - `index.html` → Interfaz del cliente y catálogo de productos
-- `admin.html` → Panel administrativo para gestión del inventario
-- `cliente.js` → Lógica del catálogo y operaciones del usuario
-- `admin.js` → Lógica de administración y control CRUD
-- `config.js` → Conexión con servicios cloud (Supabase)
-- `estilos.css` → Estilos visuales globales del sistema
+- `admin.html` → Panel de administración del sistema
+- `cliente.js` → Lógica del usuario y consumo de datos
+- `admin.js` → Lógica CRUD del inventario
+- `config.js` → Conexión con Supabase
+- `estilos.css` → Estilos globales
 
 ---
 
-## 🚀 DESPLIEGUE EN LA NUBE
+# 🚀 PROCESO DE DESPLIEGUE DEL SISTEMA
 
-El sistema fue publicado utilizando un flujo automatizado:
-
-GitHub → Vercel → Producción
-
-Cada actualización en el repositorio genera un nuevo despliegue automático, permitiendo mantener la aplicación en línea sin procesos manuales de servidor.
+El despliegue del sistema se realizó mediante un flujo estructurado basado en integración continua y servicios en la nube.
 
 ---
 
-## 🔗 URL DEL SISTEMA
+## 🔹 1. Desarrollo local del sistema
+El proyecto fue desarrollado inicialmente en entorno local utilizando HTML, CSS y JavaScript.  
+En esta etapa se construyó:
+
+- Interfaz del cliente
+- Panel administrativo
+- Lógica de inventario
+- Conexión con Supabase mediante API
+
+---
+
+## 🔹 2. Configuración de la base de datos en Supabase
+Se creó un proyecto en Supabase con una base de datos PostgreSQL.
+
+Se configuró la tabla principal `productos` con los siguientes campos:
+
+- id (identificador único)
+- nombre (texto)
+- precio (numérico)
+- stock (entero)
+- imagen_url (texto)
+- creado_en (timestamp)
+
+Además, se activó **Row Level Security (RLS)** para proteger el acceso a los datos:
+- Lectura pública para usuarios generales
+- Escritura restringida a usuarios autenticados
+
+---
+
+## 🔹 3. Subida del código a GitHub
+El código fuente fue subido a GitHub como repositorio público.
+
+Este repositorio permitió:
+- Control de versiones del sistema
+- Registro de cambios mediante commits
+- Integración directa con Vercel
+
+---
+
+## 🔹 4. Conexión con Vercel (Despliegue)
+Se conectó el repositorio de GitHub con Vercel.
+
+Vercel realizó automáticamente:
+
+- Detección del proyecto frontend
+- Construcción del entorno de producción
+- Generación de URL pública HTTPS
+
+Cada actualización en GitHub genera un nuevo despliegue automático (CI/CD).
+
+---
+
+## 🔹 5. Configuración del sistema en producción
+Se verificaron los siguientes elementos:
+
+- Conexión correcta con Supabase
+- Funcionamiento del catálogo de productos
+- Acceso al panel administrativo
+- Carga de imágenes desde URLs externas
+- Persistencia de datos en la nube
+
+---
+
+## 🌐 URL DEL SISTEMA EN PRODUCCIÓN
 
 👉 https://minimarket-five.vercel.app/
+
+---
+
+## 🧠 RESULTADO DEL DESPLIEGUE
+
+El sistema fue desplegado exitosamente en la nube logrando:
+
+- Acceso público desde cualquier navegador
+- Integración completa frontend + backend
+- Base de datos en tiempo real
+- Actualización automática mediante GitHub + Vercel
+- Arquitectura completamente serverless
+
+---
+
+## 📌 CONCLUSIÓN TÉCNICA
+
+El proceso de despliegue permitió comprender un flujo real de desarrollo moderno, donde el código pasa de un entorno local a un entorno productivo sin necesidad de servidores físicos.
+
+La combinación de Supabase, Vercel y GitHub representa una arquitectura actual utilizada en proyectos profesionales basados en la nube.
