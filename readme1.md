@@ -1,133 +1,116 @@
-# 🛒 SISTEMA WEB MINIMARKET SANTA MARÍA
+# SISTEMA WEB MINIMARKET
 
-Este proyecto consiste en el desarrollo e implementación de un sistema web para la gestión de productos de un minimarket, orientado al control de inventario y administración en línea.
+El presente proyecto consiste en el desarrollo e implementación de un sistema web para la gestión de inventario y ventas de un minimarket. La solución está diseñada bajo una arquitectura moderna basada en servicios en la nube, utilizando un enfoque serverless que elimina la necesidad de servidores físicos.
 
-El sistema fue diseñado bajo una arquitectura moderna basada en servicios en la nube, aplicando el enfoque **JAMstack**, lo que permite desacoplar el frontend, backend y despliegue, logrando mayor escalabilidad, rendimiento y facilidad de mantenimiento.
-
----
-
-## ENFOQUE DEL SISTEMA
-
-El sistema sigue una arquitectura distribuida donde cada componente cumple una función específica:
-
-- Interfaz de usuario ejecutada en el navegador (Frontend)
-- Base de datos en la nube con acceso seguro (Supabase)
-- Despliegue automatizado en plataforma serverless (Vercel)
-- Control de versiones centralizado (GitHub)
-
-Este enfoque permite que el sistema funcione sin necesidad de servidores locales tradicionales.
+El sistema permite la administración de productos, control de stock y visualización de un catálogo dinámico conectado en tiempo real a una base de datos en la nube.
 
 ---
 
 ## STACK TECNOLÓGICO
 
-- HTML5, CSS3, JavaScript (Frontend)
-- Supabase (Backend as a Service con PostgreSQL)
-- Vercel (Hosting y despliegue automático)
-- GitHub (Control de versiones y CI/CD)
+El sistema está compuesto por las siguientes tecnologías:
+
+- **Frontend:** HTML5, CSS3 y JavaScript modular (sin frameworks)
+- **Backend as a Service:** Supabase (PostgreSQL + API REST + autenticación)
+- **Hosting y despliegue:** Vercel (plataforma serverless con CI/CD automático)
+- **Control de versiones:** GitHub (repositorio central del proyecto)
+
+---
+
+## ARQUITECTURA DEL SISTEMA
+
+El sistema sigue una arquitectura desacoplada tipo JAMstack:
+
+Usuario → Frontend (navegador) → API Supabase → Base de datos PostgreSQL  
+                     ↓  
+               Vercel (hosting y despliegue automático)
+
+Este modelo permite independencia entre capas, facilitando escalabilidad y mantenimiento.
 
 ---
 
 ## ESTRUCTURA DEL PROYECTO
 
-- `index.html` → Interfaz del cliente y catálogo de productos
-- `admin.html` → Panel de administración del sistema
-- `cliente.js` → Lógica del usuario y consumo de datos
-- `admin.js` → Lógica CRUD del inventario
-- `config.js` → Conexión con Supabase
-- `estilos.css` → Estilos globales
+El proyecto se organiza en archivos planos ubicados en la raíz:
+
+- `index.html` → Interfaz del cliente (catálogo de productos)
+- `admin.html` → Panel administrativo (CRUD de inventario)
+- `cliente.js` → Lógica del catálogo y consumo de datos
+- `admin.js` → Lógica de administración y control de stock
+- `config.js` → Configuración de conexión con Supabase
+- `estilos.css` → Estilos globales del sistema
 
 ---
 
-#PROCESO DE DESPLIEGUE DEL SISTEMA
+## DESPLIEGUE DEL SISTEMA
 
-El despliegue del sistema se realizó mediante un flujo estructurado basado en integración continua y servicios en la nube.
+El despliegue se realizó mediante un flujo automatizado basado en integración continua (CI/CD), dividido en las siguientes etapas:
 
----
+### 1. Configuración del backend en Supabase
+Se creó un proyecto en Supabase con base de datos PostgreSQL.
 
-## 🔹 1. Desarrollo local del sistema
-El proyecto fue desarrollado inicialmente en entorno local utilizando HTML, CSS y JavaScript.  
-En esta etapa se construyó:
+Se implementó la tabla principal `productos` con los siguientes campos:
 
-- Interfaz del cliente
-- Panel administrativo
-- Lógica de inventario
-- Conexión con Supabase mediante API
+- id (clave primaria)
+- codigo_barras (identificador único del producto)
+- nombre (descripción del producto)
+- precio (valor numérico)
+- stock (cantidad disponible)
+- imagen_url (enlace de imagen)
 
----
-
-## 🔹 2. Configuración de la base de datos en Supabase
-Se creó un proyecto en Supabase con una base de datos PostgreSQL.
-
-Se configuró la tabla principal `productos` con los siguientes campos:
-
-- id (identificador único)
-- nombre (texto)
-- precio (numérico)
-- stock (entero)
-- imagen_url (texto)
-- creado_en (timestamp)
-
-Además, se activó **Row Level Security (RLS)** para proteger el acceso a los datos:
-- Lectura pública para usuarios generales
+Además, se activó Row Level Security (RLS) para controlar el acceso a los datos:
+- Lectura pública para usuarios anónimos
 - Escritura restringida a usuarios autenticados
 
 ---
 
-## 🔹 3. Subida del código a GitHub
-El código fuente fue subido a GitHub como repositorio público.
+### 2. Configuración de credenciales (API)
+La conexión entre el frontend y Supabase se realiza mediante el archivo `config.js`.
 
-Este repositorio permitió:
+Este archivo contiene variables de entorno públicas:
+
+- SUPABASE_URL → URL del proyecto en Supabase
+- SUPABASE_KEY → clave pública anon para consumo de API
+
+Estas credenciales permiten la comunicación directa con la base de datos desde el frontend.
+
+---
+
+### 3. Versionamiento del código en GitHub
+El proyecto fue alojado en un repositorio público de GitHub, lo que permitió:
+
 - Control de versiones del sistema
 - Registro de cambios mediante commits
-- Integración directa con Vercel
+- Integración directa con plataformas de despliegue
 
 ---
 
-## 🔹 4. Conexión con Vercel (Despliegue)
-Se conectó el repositorio de GitHub con Vercel.
+### 4. Despliegue en Vercel
+El repositorio de GitHub fue conectado con Vercel.
 
-Vercel realizó automáticamente:
+Vercel ejecuta automáticamente el proceso de despliegue:
 
-- Detección del proyecto frontend
-- Construcción del entorno de producción
-- Generación de URL pública HTTPS
+- Detecta el proyecto frontend
+- Genera entorno de producción
+- Publica una URL HTTPS pública
+- Activa despliegue automático (CI/CD)
 
-Cada actualización en GitHub genera un nuevo despliegue automático (CI/CD).
-
----
-
-## 🔹 5. Configuración del sistema en producción
-Se verificaron los siguientes elementos:
-
-- Conexión correcta con Supabase
-- Funcionamiento del catálogo de productos
-- Acceso al panel administrativo
-- Carga de imágenes desde URLs externas
-- Persistencia de datos en la nube
-
----
-
-## URL DEL SISTEMA EN PRODUCCIÓN
-
- https://minimarket-five.vercel.app/
+Cada cambio realizado en GitHub actualiza automáticamente la aplicación en producción.
 
 ---
 
 ## RESULTADO DEL DESPLIEGUE
 
-El sistema fue desplegado exitosamente en la nube logrando:
+El sistema quedó completamente funcional en entorno cloud con:
 
 - Acceso público desde cualquier navegador
-- Integración completa frontend + backend
-- Base de datos en tiempo real
-- Actualización automática mediante GitHub + Vercel
-- Arquitectura completamente serverless
+- Base de datos en tiempo real con Supabase
+- Panel administrativo operativo
+- Catálogo dinámico de productos
+- Actualizaciones automáticas mediante GitHub + Vercel
 
 ---
 
-## CONCLUSIÓN TÉCNICA
+## URL DEL SISTEMA
 
-El proceso de despliegue permitió comprender un flujo real de desarrollo moderno, donde el código pasa de un entorno local a un entorno productivo sin necesidad de servidores físicos.
-
-La combinación de Supabase, Vercel y GitHub representa una arquitectura actual utilizada en proyectos profesionales basados en la nube.
+https://minimarket-five.vercel.app/
